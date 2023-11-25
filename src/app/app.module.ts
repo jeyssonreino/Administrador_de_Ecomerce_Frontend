@@ -26,7 +26,6 @@ import { EditarDetallePedidoComponent } from './components/detalle-pedido/editar
 import { PedidoComponent } from './components/pedido/pedido.component';
 import { AgregarPedidoComponent } from './components/pedido/agregar-pedido/agregar-pedido.component';
 import { EditarPedidoComponent } from './components/pedido/editar-pedido/editar-pedido.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 
