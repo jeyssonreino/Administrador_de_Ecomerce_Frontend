@@ -30,6 +30,7 @@ import { EditarPedidoComponent } from './components/pedido/editar-pedido/editar-
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,8 +53,7 @@ import { EditarPedidoComponent } from './components/pedido/editar-pedido/editar-
     EditarDetallePedidoComponent,
     PedidoComponent,
     AgregarPedidoComponent,
-    EditarPedidoComponent,
-    DashboardComponent,
+    EditarPedidoComponent
 
     
 
