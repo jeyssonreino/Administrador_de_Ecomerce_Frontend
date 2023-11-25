@@ -1,0 +1,16 @@
+<div>
+    <div>
+        <h1>Editar categoria</h1>
+    </div>
+    <div>
+        <form action="">
+            <div>
+                <label for="nombre">Nombre: </label>
+                <input type="text" name="nombre" id="nombre" value="{{ categoria.nombre }}" [(ngModel)]="datos.nombre">
+            </div>
+            <button (click)="actualizarCategoriaPorId(id,categoria)">Guardar</button>
+            <button (click)="redireccionarCategoria()">Volver</button>
+        </form>
+    </div>
+</div>
+

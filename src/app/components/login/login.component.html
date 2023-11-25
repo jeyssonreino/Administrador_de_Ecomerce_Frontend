@@ -1,0 +1,24 @@
+<div class="contenedor-principal">
+  <h1>Iniciar Sesión</h1>
+  <form action="">
+    <div class="formulario-login-input">
+      <label for="correo">Correo</label>
+      <input type="email" [(ngModel)]="correo" name="correo" id="correo" required/>
+    </div>
+    <div class="formulario-login-input">
+      <label for="contrasena">Contraseña</label>
+      <input type="password" [(ngModel)]="contrasena" name="contrasena" id="contrasena" required/>
+    </div>
+    <div class="formulario-login-input">
+        <button class="btn-iniciar-session" (click)="iniciarSession()">Iniciar Sesión</button>
+    </div>
+  </form>
+  <div class="mas-opciones-login">
+    <div class="contenedor-registrarse">
+        <a routerLink="/login">Registrarse</a>
+    </div>
+    <div class="contenedor-olvide-contraseña">
+        <a routerLink="/login">Olvide mi contraseña</a>
+    </div>
+  </div>
+</div>

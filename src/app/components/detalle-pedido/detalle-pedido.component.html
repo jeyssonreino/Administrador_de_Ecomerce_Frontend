@@ -1,0 +1,29 @@
+<h1>Tabla de detalles de Pedidos</h1>
+<button (click)="redireccionAgregarDetallePedido()">Agregar</button>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Fecha del pedido</th>
+            <th>Hora del pedido</th>
+            <th>Forma de pago</th>
+            <th>Ciudad</th>
+            <th>Dirección</th>
+            <th>Estado</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let detallePedido of detallePedidos">
+            <td>{{ detallePedido.id }}</td>
+            <td>{{ detallePedido.fechaPedido }}</td>
+            <td>{{ detallePedido.horaPedido }}</td>
+            <td>{{ detallePedido.formaPago }}</td>
+            <td>{{ detallePedido.ciudad }}</td>
+            <td>{{ detallePedido.direccion }}</td>
+            <td>{{ detallePedido.estado }}</td>
+            <td><button (click)="redireccionEditarDetallePedido(detallePedido.id)">Editar</button><button (click)="eliminarDetallePedidoPorId(detallePedido.id)">Eliminar</button></td>
+        </tr>
+    </tbody>
+</table>
+

@@ -1,0 +1,42 @@
+<div>
+    <div>
+        <h1>Agregar nuevo detalle del pedido</h1>
+    </div>
+    <div>
+        <form action="">
+            <div>
+                <label for="fechaPedido">Fecha del pedido: </label>
+                <input type="date" name="fechaPedido" id="fechaPedido" [(ngModel)] = "datos.fechaPedido">
+            </div>
+            <div>
+                <label for="horaPedido">Hora del pedido: </label>
+                <input type="datetime-local" name="horaPedido" id="horaPedido" [(ngModel)] = "datos.horaPedido">
+            </div>
+            <div>
+                <label for="formaPago">forma de pago: </label>
+                <select name="formaPago" id="formaPago" [(ngModel)] = "datos.formaPago">
+                    <option value="I">Seleccione una opción</option>
+                    <option value="EFECTIVO">Efectivo</option>
+                </select>
+            </div>
+            <div>
+                <label for="ciudad">Ciudad: </label>
+                <input type="text" name="ciudad" id="ciudad" [(ngModel)] = "datos.ciudad">
+            </div>
+            <div>
+                <label for="direccion">Direccion: </label>
+                <input type="text" name="direccion" id="direccion" [(ngModel)] = "datos.direccion">
+            </div>
+            <div>
+                <label for="estado">Estado: </label>
+                <select name="estado" id="estado" [(ngModel)] = "datos.estado">
+                    <option value="I">Seleccione una opción</option>
+                    <option value="ENCARGADO">Encargado</option>
+                    <option value="DESPACHADO">Despachado</option>
+                </select>
+            </div>
+            <button (click)="agregarDetallePedido()">Agregar</button>
+            <button (click)="redireccionarDetallePedido()">Volver</button>
+        </form>
+    </div>
+</div>

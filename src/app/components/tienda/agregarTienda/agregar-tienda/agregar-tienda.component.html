@@ -1,0 +1,27 @@
+<div>
+    <div>
+        <h1>Agregar nueva tienda</h1>
+    </div>
+    <div>
+        <form action="">
+            <div>
+                <label for="nombre">Nombre: </label>
+                <input type="text" name="nombre" id="nombre" [(ngModel)] = "datos.nombre">
+            </div>
+            <div>
+                <label for="representante">Representante: </label>
+                <input type="text" name="representante" id="representante" [(ngModel)] = "datos.representante">
+            </div>
+            <div>
+                <label for="telefono">Teléfono: </label>
+                <input type="text" name="telefono" id="telefono" [(ngModel)] = "datos.telefono">
+            </div>
+            <div>
+                <label for="estadoSuscripcion">Estado de suscripción: </label>
+                <input type="text" name="estadoSuscripcion" id="estadoSuscripcion" [(ngModel)] = "datos.estadoSuscripcion">
+            </div>
+            <button (click)="agregarTienda()">Agregar</button>
+            <button (click)="redireccionarTienda()">Volver</button>
+        </form>
+    </div>
+</div>

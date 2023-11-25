@@ -1,0 +1,66 @@
+<div>
+    <div>
+        <h1>Agregar nueva Usuario</h1>
+    </div>
+    <div>
+        <form action="">
+            <div>
+                <label for="nombre1">nombre1: </label>
+                <input type="text" name="nombre1" id="nombre1" [(ngModel)] = "datos.nombre1">
+            </div>
+            <div>
+                <label for="nombre2">nombre2: </label>
+                <input type="text" name="nombre2" id="nombre2" [(ngModel)] = "datos.nombre2">
+            </div>
+            <div>
+                <label for="apellido1">apellido1: </label>
+                <input type="text" name="apellido1" id="apellido1" [(ngModel)] = "datos.apellido1">
+            </div>
+            <div>
+                <label for="apellido2">apellido2: </label>
+                <input type="text" name="apellido2" id="apellido2" [(ngModel)] = "datos.apellido2">
+            </div>
+            <div>
+                <label for="fechaNacimiento">fechaNacimiento: </label>
+                <input type="date" name="fechaNacimiento" id="fechaNacimiento" [(ngModel)] = "datos.fechaNacimiento">
+            </div>
+            <div>
+                <label for="sexo">sexo: </label>
+                <select name="sexo" id="sexo" [(ngModel)] = "datos.sexo">
+                    <option value="I" selected>Seleccione una opción</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                    <option value="O">Otro</option>
+                </select>
+                
+                
+            </div>
+            <div>
+                <label for="telefono">telefono: </label>
+                <input type="text" name="telefono" id="telefono" [(ngModel)] = "datos.telefono">
+            </div>
+            <div>
+                <label for="correo">correo: </label>
+                <input type="text" name="correo" id="correo" [(ngModel)] = "datos.correo">
+            </div>
+            <div>
+                <label for="contrasena">contrasena: </label>
+                <input type="text" name="contrasena" id="contrasena" [(ngModel)] = "datos.contrasena">
+            </div>
+            <div>
+                <label for="fechayHoraDeRegistro">fechayHoraDeRegistro: </label>
+                <input type="datetime-local" name="fechayHoraDeRegistro" id="fechayHoraDeRegistro" [(ngModel)] = "datos.fechayHoraDeRegistro">
+            </div>
+            <div>
+                <label for="tipoUsuario">tipoUsuario: </label>
+                <select name="tipoUsuario" id="tipoUsuario" [(ngModel)] = "datos.tipoUsuario">
+                    <option value="I">Seleccione una opcion</option>
+                    <option value="ADMIN">Administrador</option>
+                    <option value="CUSTOMER">Cliente</option>
+                </select>
+            </div>
+            <button (click)="agregarUsuario()">Agregar</button>
+            <button (click)="redireccionarUsuario()">Volver</button>
+        </form>
+    </div>
+</div>

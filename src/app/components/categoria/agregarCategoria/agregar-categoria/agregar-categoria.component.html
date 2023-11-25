@@ -1,0 +1,15 @@
+<div>
+    <div>
+        <h1>Agregar nueva categoria</h1>
+    </div>
+    <div>
+        <form action="">
+            <div>
+                <label for="nombre">Nombre: </label>
+                <input type="text" name="nombre" id="nombre" [(ngModel)] = "datos.nombre">
+            </div>
+            <button (click)="agregarCategoria()">Agregar</button>
+            <button (click)="redireccionarCategoria()">Volver</button>
+        </form>
+    </div>
+</div>

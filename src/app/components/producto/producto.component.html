@@ -1,0 +1,49 @@
+<h1>Tabla de Productos</h1>
+<button (click)="redireccionAgregarProducto()">Agregar</button>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Genero</th>
+            <th>Talla</th>
+            <th>Tipo de material</th>
+            <th>Descuento</th>
+            <th>Marca</th>
+            <th>Imagen principal</th>
+            <th>Imagen 2</th>
+            <th>Imagen 3</th>
+            <th>imagen 4</th>
+            <th>imagen 5</th>
+            <th>Categoria</th>
+            <th>Tienda</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let producto of productos">
+            <td>{{ producto.id }}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.cantidad }}</td>
+            <td>{{ producto.precio }}</td>
+            <td>{{ producto.genero }}</td>
+            <td>{{ producto.talla }}</td>
+            <td>{{ producto.tipoMaterial }}</td>
+            <td>{{ producto.descuento }}</td>
+            <td>{{ producto.marca }}</td>
+            <td>{{ producto.imagenPrincipal }}</td>
+            <td>{{ producto.imagen2 }}</td>
+            <td>{{ producto.imagen3 }}</td>
+            <td>{{ producto.imagen4 }}</td>
+            <td>{{ producto.imagen5 }}</td>
+            <td>{{ producto.nombreCategoria }}</td>
+            <td>{{ producto.nombreTienda }}</td>
+            <td><button (click)="redireccionEditarProducto(producto.id)">Editar</button><button (click)="eliminarProductoPorId(producto.id)">Eliminar</button></td>
+        </tr>
+    </tbody>
+</table>
+

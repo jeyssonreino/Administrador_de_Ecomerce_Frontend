@@ -1,0 +1,23 @@
+<h1>Tabla de Pedidos</h1>
+<button (click)="redireccionAgregarPedido()">Agregar</button>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>idDetallePedido</th>
+            <th>idProducto</th>
+            <th>idUsuario</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pedido of pedidos">
+            <td>{{ pedido.id }}</td>
+            <td>{{ pedido.idDetallePedido }}</td>
+            <td>{{ pedido.idProducto }}</td>
+            <td>{{ pedido.idUsuario }}</td>
+            <td><button (click)="redireccionEditarPedido(pedido.id)">Editar</button><button (click)="eliminarPedidosPorId(pedido.id)">Eliminar</button></td>
+        </tr>
+    </tbody>
+</table>
+

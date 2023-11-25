@@ -1,0 +1,21 @@
+<h1>Tabla de Categorias</h1>
+<button (click)="redireccionAgregarCategoria()">Agregar</button>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let categoria of categorias">
+            <td>{{ categoria.id }}</td>
+            <td>{{ categoria.nombre }}</td>
+            <td><button (click)="redireccionEditarCategoria(categoria.id)">Editar</button><button (click)="eliminarCategoriaPorId(categoria.id)">Eliminar</button></td>
+        </tr>
+    </tbody>
+</table>
+
+
+

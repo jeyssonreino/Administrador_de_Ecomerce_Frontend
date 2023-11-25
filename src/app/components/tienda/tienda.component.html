@@ -1,0 +1,25 @@
+<h1>Tabla de Tiendas</h1>
+<button (click)="redireccionAgregarTienda()">Agregar</button>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Representante</th>
+            <th>Telefono</th>
+            <th>Estado de suscripción</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tienda of tiendas">
+            <td>{{ tienda.id }}</td>
+            <td>{{ tienda.nombre }}</td>
+            <td>{{ tienda.representante }}</td>
+            <td>{{ tienda.telefono }}</td>
+            <td>{{ tienda.estadoSuscripcion }}</td>
+            <td><button (click)="redireccionEditarTienda(tienda.id)">Editar</button><button (click)="eliminarTiendaPorId(tienda.id)">Eliminar</button></td>
+        </tr>
+    </tbody>
+</table>
+

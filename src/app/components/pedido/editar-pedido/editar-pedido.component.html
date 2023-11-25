@@ -1,0 +1,23 @@
+<div>
+    <div>
+        <h1>Agregar nueva pedido</h1>
+    </div>
+    <div>
+        <form action="">
+            <div>
+                <label for="idDetallePedido">idDetallePedido: </label>
+                <input type="text" name="idDetallePedido" id="idDetallePedido" value="{{ pedido.idDetallePedido }}" [(ngModel)] = "datos.idDetallePedido">
+            </div>
+            <div>
+                <label for="idProducto">idProducto: </label>
+                <input type="text" name="idProducto" id="idProducto" value="{{ pedido.idProducto }}" [(ngModel)] = "datos.idProducto">
+            </div>
+            <div>
+                <label for="idUsuario">idUsuario: </label>
+                <input type="text" name="idUsuario" id="idUsuario" value="{{ pedido.idUsuario }}" [(ngModel)] = "datos.idUsuario">
+            </div>
+            <button (click)="actualizarPedidoPorId(id, pedido)">Actaulizar</button>
+            <button (click)="redireccionarPedido()">Volver</button>
+        </form>
+    </div>
+</div>
