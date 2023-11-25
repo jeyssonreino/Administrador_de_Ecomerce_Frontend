@@ -26,6 +26,13 @@ import { EditarDetallePedidoComponent } from './components/detalle-pedido/editar
 import { PedidoComponent } from './components/pedido/pedido.component';
 import { AgregarPedidoComponent } from './components/pedido/agregar-pedido/agregar-pedido.component';
 import { EditarPedidoComponent } from './components/pedido/editar-pedido/editar-pedido.component';
+import { NavegadorComponent } from './components/navegador/navegador.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+
 
 
 
@@ -53,7 +60,8 @@ import { EditarPedidoComponent } from './components/pedido/editar-pedido/editar-
     EditarDetallePedidoComponent,
     PedidoComponent,
     AgregarPedidoComponent,
-    EditarPedidoComponent
+    EditarPedidoComponent,
+    NavegadorComponent,
 
     
 
@@ -65,6 +73,11 @@ import { EditarPedidoComponent } from './components/pedido/editar-pedido/editar-
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
 
   ],
   providers: [
