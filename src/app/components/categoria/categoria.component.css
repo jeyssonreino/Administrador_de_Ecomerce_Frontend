@@ -1,0 +1,18 @@
+.body {
+  .titulo {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px 0px 0px;
+  }
+  .btn-agregar{
+    margin: 10px 5% 0% 5%;
+  }
+
+  .tabla {
+    margin: 10px 5% 50px 5%;
+  }
+}
+
+table {
+  width: 100%;
+}

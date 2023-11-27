@@ -2,12 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TiendaService } from 'src/app/services/tienda/tienda.service';
 
+export interface Tienda {
+    id:number,
+    nombre:string,
+    representante:string,
+    telefono:string,
+    estadoSuscripcion:string,
+}
+
 @Component({
   selector: 'app-tienda',
   templateUrl: './tienda.component.html',
   styleUrls: ['./tienda.component.css']
 })
 export class TiendaComponent implements OnInit{
+
+  displayedColumns: string[] = ['id', 'nombre','representante','telefono','estadoSuscripcion', 'opciones'];
+  dataSource: Tienda[] = [];
 
   tiendas:any;
 
@@ -23,8 +34,8 @@ export class TiendaComponent implements OnInit{
 
     //Método obtener la lista de las tiendas registradas en la base de datos 
     obtenerTiendas(){
-      this.tiendaService.getTiendas().subscribe((response) => {    //Se llama al servicio para obtener las tiendas
-          this.tiendas = response;
+      this.tiendaService.getTiendas().subscribe((response:any) => {    //Se llama al servicio para obtener las tiendas
+        this.dataSource = response;
       },(error) =>{
         if(error.status === 403){ //Se valida que que el usuario tenga los permisos necesarios
           alert('No tienes permisos');

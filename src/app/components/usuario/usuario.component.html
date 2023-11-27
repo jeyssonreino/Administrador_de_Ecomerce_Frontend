@@ -1,40 +1,67 @@
-<h1>Tabla de Usuarios</h1>
-<button (click)="redireccionAgregarUsuario()">Agregar</button>
-<table>
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nombre 1</th>
-            <th>Nombre 2</th>
-            <th>Apellido 1</th>
-            <th>Apellido 2</th>
-            <th>Fecha de nacimiento</th>
-            <th>Sexo</th>
-            <th>Teléfono</th>
-            <th>Correo</th>
-            <th>Contraseña</th>
-            <th>Registro</th>
-            <th>Tipo de usuario</th>
-            <th>Opciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let usuario of usuarios">
-            <td>{{ usuario.id }}</td>
-            <td>{{ usuario.nombre1 }}</td>
-            <td>{{ usuario.nombre2 }}</td>
-            <td>{{ usuario.apellido1 }}</td>
-            <td>{{ usuario.apellido2 }}</td>
-            <td>{{ usuario.fechaNacimiento }}</td>
-            <td>{{ usuario.sexo }}</td>
-            <td>{{ usuario.telefono }}</td>
-            <td>{{ usuario.correo }}</td>
-            <td>{{ usuario.contrasena }}</td>
-            <td>{{ usuario.fechayHoraDeRegistro }}</td>
-            <td>{{ usuario.tipoUsuario }}</td>
-            <td><button (click)="redireccionEditarUsuario(usuario.id)">Editar</button><button (click)="eliminarUsuarioPorId(usuario.id)">Eliminar</button></td>
-        </tr>
-    </tbody>
-</table>
+<div class="body">
+    <div class="titulo">
+        <h1>Tabla de usuarios</h1>
+    </div>
+    <div class="btn-agregar">
+      <button mat-raised-button color="primary" (click)="redireccionAgregarUsuario()">Agregar</button>
+    </div>
+
+  <div class="tabla">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id.</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombre1">
+        <th mat-header-cell *matHeaderCellDef>Nombre1</th>
+        <td mat-cell *matCellDef="let element">{{ element.nombre1 }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="apellido1">
+        <th mat-header-cell *matHeaderCellDef>apellido1</th>
+        <td mat-cell *matCellDef="let element">{{ element.apellido1 }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="apellido2">
+        <th mat-header-cell *matHeaderCellDef>apellido2</th>
+        <td mat-cell *matCellDef="let element">{{ element.apellido2 }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="sexo">
+        <th mat-header-cell *matHeaderCellDef>sexo</th>
+        <td mat-cell *matCellDef="let element">{{ element.sexo }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="telefono">
+        <th mat-header-cell *matHeaderCellDef>telefono</th>
+        <td mat-cell *matCellDef="let element">{{ element.telefono }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="correo">
+        <th mat-header-cell *matHeaderCellDef>correo</th>
+        <td mat-cell *matCellDef="let element">{{ element.correo }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="tipo_de_usuario">
+        <th mat-header-cell *matHeaderCellDef>tipo_de_usuario</th>
+        <td mat-cell *matCellDef="let element">{{ element.tipo_de_usuario }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="opciones">
+        <th mat-header-cell *matHeaderCellDef>Opciones</th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-raised-button (click)="redireccionEditarUsuario(element.id)">Editar</button>
+            <button mat-raised-button color="warn" (click)="eliminarUsuarioPorId(element.id)">Eliminar</button>       
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+</div>
+
 
 

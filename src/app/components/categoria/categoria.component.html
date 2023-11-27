@@ -1,21 +1,34 @@
-<h1>Tabla de Categorias</h1>
-<button (click)="redireccionAgregarCategoria()">Agregar</button>
-<table>
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Opciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let categoria of categorias">
-            <td>{{ categoria.id }}</td>
-            <td>{{ categoria.nombre }}</td>
-            <td><button (click)="redireccionEditarCategoria(categoria.id)">Editar</button><button (click)="eliminarCategoriaPorId(categoria.id)">Eliminar</button></td>
-        </tr>
-    </tbody>
-</table>
+<div class="body">
+    <div class="titulo">
+        <h1>Tabla de categorias</h1>
+    </div>
+    <div class="btn-agregar">
+      <button mat-raised-button color="primary" (click)="redireccionAgregarCategoria()">Agregar</button>
+    </div>
 
+  <div class="tabla">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id.</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
 
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+      </ng-container>
 
+      <ng-container matColumnDef="opciones">
+        <th mat-header-cell *matHeaderCellDef>Opciones</th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-raised-button (click)="redireccionEditarCategoria(element.id)">Editar</button>
+            <button mat-raised-button color="warn" (click)="eliminarCategoriaPorId(element.id)">Eliminar</button>       
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+</div>

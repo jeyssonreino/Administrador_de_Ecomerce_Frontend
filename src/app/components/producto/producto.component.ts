@@ -2,12 +2,29 @@ import { Component, OnInit } from '@angular/core';
 import { ProductoService } from 'src/app/services/producto/producto.service';
 import { Router } from '@angular/router';
 
+export interface Producto {
+    id:number
+    nombre:string,
+    cantidad:number,
+    precio:number,
+    genero:string
+    talla:string,
+    tipoMaterial:string,
+    descuento:number,
+    marca:string,
+    nombreCategoria:string,
+    nombreTienda:string
+}
+
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.component.html',
   styleUrls: ['./producto.component.css']
 })
 export class ProductoComponent implements OnInit{
+
+  displayedColumns: string[] = ['id', 'nombre','cantidad','precio','genero','talla','tipoMaterial','descuento','marca','nombreCategoria','nombreTienda','opciones'];
+  dataSource: Producto[] = [];
 
   productos:any;
 
@@ -25,8 +42,8 @@ export class ProductoComponent implements OnInit{
 
     //Método obtener la lista de los productos registrados en la base de datos 
     obtenerProductos(){
-      this.productoService.getProductosWithFk().subscribe((response) => {    //Se llama al servicio para obtener las categorias
-          this.productos = response;
+      this.productoService.getProductosWithFk().subscribe((response:any) => {    //Se llama al servicio para obtener las categorias
+          this.dataSource = response;
       },(error) =>{
         if(error.status === 403){ //Se valida que que el usuario tenga los permisos necesarios
           alert('No tienes permisos');

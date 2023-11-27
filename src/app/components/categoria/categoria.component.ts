@@ -2,12 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from 'src/app/services/categoria/categoria.service';
 import { Router } from '@angular/router';
 
+export interface Categoria {
+  id: number;
+  nombre: string;
+}
+
 @Component({
   selector: 'app-categoria',
   templateUrl: './categoria.component.html',
   styleUrls: ['./categoria.component.css']
 })
+
 export class CategoriaComponent implements OnInit{
+
+  displayedColumns: string[] = ['id', 'nombre','opciones'];
+  dataSource: Categoria[] = [];
 
   categorias:any;
 
@@ -23,8 +32,8 @@ export class CategoriaComponent implements OnInit{
 
   //Método obtener la lista de las categorias registradas en la base de datos 
   obtenerCategorias(){
-    this.categoriaService.getCategorias().subscribe((response) => {    //Se llama al servicio para obtener las categorias
-        this.categorias = response;
+    this.categoriaService.getCategorias().subscribe((response:any) => {    //Se llama al servicio para obtener las categorias
+        this.dataSource = response;
     },(error) =>{
       if(error.status === 403){ //Se valida que que el usuario tenga los permisos necesarios
         alert('No tienes permisos');

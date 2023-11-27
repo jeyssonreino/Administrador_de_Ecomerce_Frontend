@@ -2,12 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import { DetallePedidoService } from 'src/app/services/detallePedido/detalle-pedido.service';
 import { Router } from '@angular/router';
 
+
+export interface DetallePedido {
+  id:number,
+  fechaPedido:string,
+  horaPedido:string,
+  formaPago:string,
+  ciudad:string,
+  direccion:string,
+  estado:string
+}
+
 @Component({
   selector: 'app-detalle-pedido',
   templateUrl: './detalle-pedido.component.html',
   styleUrls: ['./detalle-pedido.component.css']
 })
 export class DetallePedidoComponent implements OnInit{
+
+  displayedColumns: string[] = ['id', 'fechaPedido','horaPedido','formaPago','ciudad','direccion','estado', 'opciones'];
+  dataSource: DetallePedido[] = [];
+
 
   detallePedidos:any;
 
@@ -22,8 +37,9 @@ export class DetallePedidoComponent implements OnInit{
 
     //Método obtener la lista de los detalles del pedido registradas en la base de datos 
     obtenerDetallesPedido(){
-      this.serviceDetallePedido.getDetallePedido().subscribe((response) => {    //Se llama al servicio para obtener las categorias
-          this.detallePedidos = response;
+      this.serviceDetallePedido.getDetallePedido().subscribe((response:any) => {    //Se llama al servicio para obtener las categorias
+        this.dataSource = response;
+        console.log(this.dataSource);
       },(error) =>{
         if(error.status === 403){ //Se valida que que el usuario tenga los permisos necesarios
           alert('No tienes permisos');

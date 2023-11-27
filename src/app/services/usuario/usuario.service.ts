@@ -36,6 +36,12 @@ export class UsuarioService {
       return this.http.post(url,datos);
     }
 
+    //Servicio para obtener los usuarios para mostrar en el administrador de usuarios
+    getUsuariosToAdmin(){
+      const url = this.api + `/obtener-usuarios-para-admin`;
+      return this.http.get(url)
+    }
+
 
 
 }

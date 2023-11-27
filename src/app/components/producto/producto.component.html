@@ -1,49 +1,79 @@
-<h1>Tabla de Productos</h1>
-<button (click)="redireccionAgregarProducto()">Agregar</button>
-<table>
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Cantidad</th>
-            <th>Precio</th>
-            <th>Genero</th>
-            <th>Talla</th>
-            <th>Tipo de material</th>
-            <th>Descuento</th>
-            <th>Marca</th>
-            <th>Imagen principal</th>
-            <th>Imagen 2</th>
-            <th>Imagen 3</th>
-            <th>imagen 4</th>
-            <th>imagen 5</th>
-            <th>Categoria</th>
-            <th>Tienda</th>
-            <th>Opciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let producto of productos">
-            <td>{{ producto.id }}</td>
-            <td>{{ producto.nombre }}</td>
-            <td>{{ producto.descripcion }}</td>
-            <td>{{ producto.cantidad }}</td>
-            <td>{{ producto.precio }}</td>
-            <td>{{ producto.genero }}</td>
-            <td>{{ producto.talla }}</td>
-            <td>{{ producto.tipoMaterial }}</td>
-            <td>{{ producto.descuento }}</td>
-            <td>{{ producto.marca }}</td>
-            <td>{{ producto.imagenPrincipal }}</td>
-            <td>{{ producto.imagen2 }}</td>
-            <td>{{ producto.imagen3 }}</td>
-            <td>{{ producto.imagen4 }}</td>
-            <td>{{ producto.imagen5 }}</td>
-            <td>{{ producto.nombreCategoria }}</td>
-            <td>{{ producto.nombreTienda }}</td>
-            <td><button (click)="redireccionEditarProducto(producto.id)">Editar</button><button (click)="eliminarProductoPorId(producto.id)">Eliminar</button></td>
-        </tr>
-    </tbody>
-</table>
+<div class="body">
+    <div class="titulo">
+        <h1>Tabla de productos</h1>
+    </div>
+    <div class="btn-agregar">
+      <button mat-raised-button color="primary" (click)="redireccionAgregarProducto()">Agregar</button>
+    </div>
 
+  <div class="tabla">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="cantidad">
+        <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+        <td mat-cell *matCellDef="let element">{{ element.cantidad }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="precio">
+        <th mat-header-cell *matHeaderCellDef>Precio</th>
+        <td mat-cell *matCellDef="let element">{{ element.precio }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="genero">
+        <th mat-header-cell *matHeaderCellDef>Genero</th>
+        <td mat-cell *matCellDef="let element">{{ element.genero }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="talla">
+        <th mat-header-cell *matHeaderCellDef>Talla</th>
+        <td mat-cell *matCellDef="let element">{{ element.talla }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="tipoMaterial">
+        <th mat-header-cell *matHeaderCellDef>Tipo de Material</th>
+        <td mat-cell *matCellDef="let element">{{ element.tipoMaterial }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="descuento">
+        <th mat-header-cell *matHeaderCellDef>Descuento</th>
+        <td mat-cell *matCellDef="let element">{{ element.descuento }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="marca">
+        <th mat-header-cell *matHeaderCellDef>Marca</th>
+        <td mat-cell *matCellDef="let element">{{ element.marca }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombreCategoria">
+        <th mat-header-cell *matHeaderCellDef>Categoria</th>
+        <td mat-cell *matCellDef="let element">{{ element.nombreCategoria }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombreTienda">
+        <th mat-header-cell *matHeaderCellDef>Tienda</th>
+        <td mat-cell *matCellDef="let element">{{ element.nombreTienda }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="opciones">
+        <th mat-header-cell *matHeaderCellDef>Opciones</th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-raised-button (click)="redireccionEditarProducto(element.id)">Editar</button>
+            <button mat-raised-button color="warn" (click)="eliminarProductoPorId(element.id)">Eliminar</button>       
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+</div>
