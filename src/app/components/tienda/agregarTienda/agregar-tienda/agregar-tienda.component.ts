@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { TiendaService } from 'src/app/services/tienda/tienda.service';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-agregar-tienda',
@@ -9,27 +11,28 @@ import { Router } from '@angular/router';
 })
 export class AgregarTiendaComponent {
 
-  //Objeto de datos de la entidad 
-  datos: any = {
-    id: '',
-    nombre: '',
-    representante: '',
-    telefono: '',
-    estadoSuscripcion: ''
-  };
+  FormGroup: FormGroup = new FormGroup({
+    id: new FormControl(''),
+    nombre: new FormControl,
+    representante: new FormControl,
+    telefono: new FormControl,
+    estadoSuscripcion: new FormControl
+  })
 
   constructor(private route: Router, private tiendaService: TiendaService) { }
 
 
   //Método para agregar una nueva categoria pasandole los datos 
   agregarTienda() {
-    this.tiendaService.saveTienda(this.datos).subscribe((response) => {
+    let datosFormlulario = this.FormGroup.value;
+    this.tiendaService.saveTienda(datosFormlulario).subscribe((response) => {
     }, (error) => {
       if (error.status === 201) {//Si la respuesta es 201 significa que fue creada exitosamente y se guardo en la base de datos 
         alert("Categoria guardada con exito")
         this.redireccionarTienda();
       } else {
         alert('Error inesperado: ')
+        console.log(error)
       }
     }
     )

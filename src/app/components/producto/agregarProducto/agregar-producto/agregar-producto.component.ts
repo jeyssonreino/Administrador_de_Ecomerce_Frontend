@@ -3,6 +3,7 @@ import { ProductoService } from 'src/app/services/producto/producto.service';
 import { CategoriaService } from 'src/app/services/categoria/categoria.service';
 import { TiendaService } from 'src/app/services/tienda/tienda.service';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-agregar-producto',
@@ -11,26 +12,25 @@ import { Router } from '@angular/router';
 })
 export class AgregarProductoComponent implements OnInit {
 
-  //Objeto de datos de la entidad 
-  datos: any = {
-    id: '',
-    nombre: '',
-    descripcion: '',
-    cantidad: 1,
-    precio: 0,
-    genero: 'I',
-    talla: 'I',
-    tipoMaterial: '',
-    descuento: 0,
-    marca: '',
-    imagenPrincipal: '',
-    imagen2: '',
-    imagen3: '',
-    imagen4: '',
-    imagen5: '',
-    idCategoria: "0",
-    idTienda: "0"
-  };
+  FormGroup: FormGroup = new FormGroup({
+    id: new FormControl(''),
+    nombre: new FormControl,
+    descripcion: new FormControl ,
+    cantidad: new FormControl(1),
+    precio: new FormControl(0),
+    genero: new FormControl('I'),
+    talla: new FormControl('I'),
+    tipoMaterial: new FormControl,
+    descuento: new FormControl(0),
+    marca: new FormControl,
+    imagenPrincipal: new FormControl,
+    imagen2: new FormControl,
+    imagen3: new FormControl,
+    imagen4: new FormControl,
+    imagen5: new FormControl,
+    idCategoria: new FormControl('0'),
+    idTienda: new FormControl('0')
+  })
 
   categorias: any;
   tiendas: any;
@@ -49,12 +49,13 @@ export class AgregarProductoComponent implements OnInit {
 
   //Método para agregar un nuevo producto pasandole los datos 
   agregarProducto() {
-    if(this.datos.idCategoria === "0"){
+    let datosFormlulario = this.FormGroup.value;
+    if(datosFormlulario.idCategoria === "0"){
       alert("Escoja una categoria valida para el producto que quiere agregar")
-    }else if (this.datos.idTienda === "0"){
+    }else if (datosFormlulario.idTienda === "0"){
       alert("Escoja una tienda valida para el producto que quiere agregar")
     }else{
-      this.productoService.saveProducto(this.datos).subscribe((response) => {
+      this.productoService.saveProducto(datosFormlulario).subscribe((response) => {
       }, (error) => {
         if (error.status === 201) {//Si la respuesta es 201 significa que fue creado exitosamente y se guardo en la base de datos 
           alert("Categoria guardada con exito")
