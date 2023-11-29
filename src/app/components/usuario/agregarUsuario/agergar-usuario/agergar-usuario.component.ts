@@ -48,7 +48,7 @@ export class AgergarUsuarioComponent {
           datosFormlulario.fechayHoraDeRegistro = datosFormlulario.fechayHoraDeRegistro.toISOString();
         }, (error) => {
           if (error.status === 201) {//Si la respuesta es 201 significa que fue creada exitosamente y se guardo en la base de datos 
-            alert("Categoria guardada con exito")
+            alert("Usuario guardado con exito")
             this.redireccionarUsuario(); 
           }else{
             alert('Error inesperado: ')

@@ -1,42 +1,66 @@
-<div>
-    <div>
-        <h1>Agregar nuevo detalle del pedido</h1>
-    </div>
-    <div>
-        <form action="">
-            <div>
-                <label for="fechaPedido">Fecha del pedido: </label>
-                <input type="date" name="fechaPedido" id="fechaPedido" value="{{ detallePedido.fechaPedido }}" [(ngModel)] = "datos.fechaPedido">
-            </div>
-            <div>
-                <label for="horaPedido">Hora del pedido: </label>
-                <input type="text" name="horaPedido" id="horaPedido" value="{{ detallePedido.horaPedido }}" [(ngModel)] = "datos.horaPedido">
-            </div>
-            <div>
-                <label for="formaPago">forma de pago: </label>
-                <select name="formaPago" id="formaPago" value="{{ detallePedido.formaPago }}" [(ngModel)] = "datos.formaPago">
-                    <option value="I">Seleccione una opción</option>
-                    <option value="EFECTIVO">Efectivo</option>
-                </select>
-            </div>
-            <div>
-                <label for="ciudad">Ciudad: </label>
-                <input type="text" name="ciudad" id="ciudad" value="{{ detallePedido.ciudad }}" [(ngModel)] = "datos.ciudad">
-            </div>
-            <div>
-                <label for="direccion">Direccion: </label>
-                <input type="text" name="direccion" id="direccion" value="{{ detallePedido.direccion }}" [(ngModel)] = "datos.direccion">
-            </div>
-            <div>
-                <label for="estado">Estado: </label>
-                <select name="estado" id="estado" value="{{ detallePedido.estado }}" [(ngModel)] = "datos.estado">
-                    <option value="I">Seleccione una opción</option>
-                    <option value="ENCARGADO">Encargado</option>
-                    <option value="DESPACHADO">Despachado</option>
-                </select>
-            </div>
-            <button (click)="actualizarDetallePedidoPorId(id, detallePedido)">Actualizar</button>
-            <button (click)="redireccionarDetallePedido()">Volver</button>
-        </form>
+<div class="titulo">
+    <h1>Agregar Pedido</h1>
+</div>
+
+<form class="formulario" [formGroup]="FormGroup">
+
+    <mat-form-field class="field">
+        <mat-label>fechaPedido</mat-label>
+        <input matInput type="date" formControlName = "fechaPedido">
+          <button *ngIf="FormGroup.get('fechaPedido')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('fechaPedido')?.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+      </mat-form-field>
+
+      <mat-form-field class="field">
+        <mat-label>horaPedido</mat-label>
+        <input matInput type="datetime-local" formControlName = "horaPedido">
+          <button *ngIf="FormGroup.get('horaPedido')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('horaPedido')?.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+      </mat-form-field>
+
+      <mat-form-field class="field">
+        <mat-label>forma de pago</mat-label>
+        <mat-select formControlName = "formaPago">
+            <mat-option value="I"> Selecciones una opción</mat-option>
+            <mat-option value="EFECTIVO"> Efectivo </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="field">
+        <mat-label>ciudad</mat-label>
+        <input matInput type="text" formControlName = "ciudad">
+          <button *ngIf="FormGroup.get('ciudad')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('ciudad')?.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+      </mat-form-field>
+
+      <mat-form-field class="field">
+        <mat-label>direccion</mat-label>
+        <input matInput type="text" formControlName = "direccion">
+          <button *ngIf="FormGroup.get('direccion')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('direccion')?.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+      </mat-form-field>
+
+
+      <mat-form-field class="field">
+        <mat-label>Estado</mat-label>
+        <mat-select formControlName = "estado">
+            <mat-option value="I"> Selecciones una opción</mat-option>
+            <mat-option value="ENVIADO"> Enviado </mat-option>
+            <mat-option value="PEDIDO"> Pedido </mat-option>
+            <mat-option value="ENTREGADO"> Entregado </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+</form>
+
+<div class="opciones">
+    <div class="botones-opciones">
+        <button mat-raised-button color="primary" class="bnt-volver" (click)="redireccionarDetallePedido()">Volver</button>
+        <button mat-raised-button color="primary" class="btn-agregar" (click)="actualizarDetallePedidoPorId(id,detallePedido)">Actualizar</button>
     </div>
 </div>
+

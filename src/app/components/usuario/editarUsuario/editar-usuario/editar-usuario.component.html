@@ -1,66 +1,107 @@
-<div>
-    <div>
-        <h1>Agregar nueva Usuario</h1>
-    </div>
-    <div>
-        <form action="">
-            <div>
-                <label for="nombre1">nombre1: </label>
-                <input type="text" name="nombre1" id="nombre1" [(ngModel)] = "datos.nombre1">
-            </div>
-            <div>
-                <label for="nombre2">nombre2: </label>
-                <input type="text" name="nombre2" id="nombre2" [(ngModel)] = "datos.nombre2">
-            </div>
-            <div>
-                <label for="apellido1">apellido1: </label>
-                <input type="text" name="apellido1" id="apellido1" [(ngModel)] = "datos.apellido1">
-            </div>
-            <div>
-                <label for="apellido2">apellido2: </label>
-                <input type="text" name="apellido2" id="apellido2" [(ngModel)] = "datos.apellido2">
-            </div>
-            <div>
-                <label for="fechaNacimiento">fechaNacimiento: </label>
-                <input type="date" name="fechaNacimiento" id="fechaNacimiento" [(ngModel)] = "datos.fechaNacimiento">
-            </div>
-            <div>
-                <label for="sexo">sexo: </label>
-                <select name="sexo" id="sexo" [(ngModel)] = "datos.sexo">
-                    <option value="I" selected>Seleccione una opción</option>
-                    <option value="M">Masculino</option>
-                    <option value="F">Femenino</option>
-                    <option value="O">Otro</option>
-                </select>
-                
-                
-            </div>
-            <div>
-                <label for="telefono">telefono: </label>
-                <input type="text" name="telefono" id="telefono" [(ngModel)] = "datos.telefono">
-            </div>
-            <div>
-                <label for="correo">correo: </label>
-                <input type="text" name="correo" id="correo" [(ngModel)] = "datos.correo">
-            </div>
-            <div>
-                <label for="contrasena">contrasena: </label>
-                <input type="text" name="contrasena" id="contrasena" [(ngModel)] = "datos.contrasena">
-            </div>
-            <div>
-                <label for="fechayHoraDeRegistro">fechayHoraDeRegistro: </label>
-                <input type="datetime-local" name="fechayHoraDeRegistro" id="fechayHoraDeRegistro" [(ngModel)] = "datos.fechayHoraDeRegistro">
-            </div>
-            <div>
-                <label for="tipoUsuario">tipoUsuario: </label>
-                <select name="tipoUsuario" id="tipoUsuario" [(ngModel)] = "datos.tipoUsuario">
-                    <option value="I">Seleccione una opcion</option>
-                    <option value="ADMIN">Administrador</option>
-                    <option value="CUSTOMER">Cliente</option>
-                </select>
-            </div>
-            <button (click)="actualizarUsuarioPorId(id,datos)">Actualizar</button>
-            <button (click)="redireccionarUsuario()">Volver</button>
-        </form>
+<div class="titulo">
+    <h1>Editar usuario</h1>
+</div>
+
+<form class="formulario" [formGroup]="FormGroup">
+
+    <mat-form-field class="field">
+        <mat-label>Primer nombre</mat-label>
+        <input matInput type="text" formControlName = "nombre1">
+          <button *ngIf="FormGroup.get('nombre1')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('nombre1')?.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+      </mat-form-field>
+
+      <mat-form-field class="field">
+        <mat-label>Segundo nombre</mat-label>
+        <input matInput type="text" formControlName = "nombre2">
+          <button *ngIf="FormGroup.get('nombre2')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('nombre2')?.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+      </mat-form-field>
+
+      <mat-form-field class="field">
+        <mat-label>Primer apellido</mat-label>
+        <input matInput type="text" formControlName = "apellido1">
+          <button *ngIf="FormGroup.get('apellido1')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('apellido1')?.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+      </mat-form-field>
+
+      <mat-form-field class="field">
+        <mat-label>Segundo apellido</mat-label>
+        <input matInput type="text" formControlName = "apellido2">
+          <button *ngIf="FormGroup.get('apellido2')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('apellido2')?.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+      </mat-form-field>
+
+      <mat-form-field class="field">
+        <mat-label>fecha de nacimiento</mat-label>
+        <input matInput type="date" formControlName = "fechaNacimiento">
+          <button *ngIf="FormGroup.get('fechaNacimiento')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('fechaNacimiento')?.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+      </mat-form-field>
+
+      <mat-form-field class="field">
+        <mat-label>Sexo</mat-label>
+        <mat-select formControlName = "sexo">
+            <mat-option value="I"> Selecciones una opción</mat-option>
+            <mat-option value="M"> Masculino </mat-option>
+            <mat-option value="F"> Femenino </mat-option>
+            <mat-option value="O"> Otro </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="field">
+        <mat-label>Teléfono</mat-label>
+        <input matInput type="text" formControlName = "telefono">
+          <button *ngIf="FormGroup.get('telefono')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('telefono')?.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+      </mat-form-field>
+
+      <mat-form-field class="field">
+        <mat-label>Correo</mat-label>
+        <input matInput type="text" formControlName = "correo">
+          <button *ngIf="FormGroup.get('correo')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('correo')?.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+      </mat-form-field>
+
+      <mat-form-field class="field">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="text" formControlName = "contrasena">
+          <button *ngIf="FormGroup.get('contrasena')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('contrasena')?.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+      </mat-form-field>
+
+      <mat-form-field class="field">
+        <mat-label>Fecha y hora de registro</mat-label>
+        <input matInput type="datetime-local" formControlName = "fechayHoraDeRegistro">
+          <button *ngIf="FormGroup.get('fechayHoraDeRegistro')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('fechayHoraDeRegistro')?.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+      </mat-form-field>
+
+      <mat-form-field class="field">
+        <mat-label>Tipo de usuario</mat-label>
+        <mat-select formControlName = "tipoUsuario">
+            <mat-option value="I"> Selecciones una opción</mat-option>
+            <mat-option value="ADMIN"> Administrador </mat-option>
+            <mat-option value="CUSTOMER"> Cliente </mat-option>
+        </mat-select>
+      </mat-form-field>
+</form>
+
+<div class="opciones">
+    <div class="botones-opciones">
+        <button mat-raised-button color="primary" class="bnt-volver" (click)="redireccionarUsuario()">Volver</button>
+        <button mat-raised-button color="primary" class="btn-agregar" (click)="actualizarUsuarioPorId(id, usuario)">Actualizar</button>
     </div>
 </div>
+
+
+

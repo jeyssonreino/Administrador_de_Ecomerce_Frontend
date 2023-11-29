@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ProductoService } from 'src/app/services/producto/producto.service';
 import { CategoriaService } from 'src/app/services/categoria/categoria.service';
 import { TiendaService } from 'src/app/services/tienda/tienda.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-editar-producto',
@@ -16,26 +17,25 @@ export class EditarProductoComponent implements OnInit {
   categorias: any;
   tiendas: any;
 
-  //Objeto nuevo que reemplezar y actualizara al objeto registrado en la base de datos 
-  datos: any = {
-    id: '',
-    nombre: '',
-    descripcion: '',
-    cantidad: 1,
-    precio: 0,
-    genero: 'I',
-    talla: 'I',
-    tipoMaterial: '',
-    descuento: 0,
-    marca: '',
-    imagenPrincipal: '',
-    imagen2: '',
-    imagen3: '',
-    imagen4: '',
-    imagen5: '',
-    idCategoria: "0",
-    idTienda: "0"
-  };
+  FormGroup: FormGroup = new FormGroup({
+    id: new FormControl(''),
+    nombre: new FormControl,
+    descripcion: new FormControl ,
+    cantidad: new FormControl(1),
+    precio: new FormControl(0),
+    genero: new FormControl('I'),
+    talla: new FormControl('I'),
+    tipoMaterial: new FormControl,
+    descuento: new FormControl(0),
+    marca: new FormControl,
+    imagenPrincipal: new FormControl,
+    imagen2: new FormControl,
+    imagen3: new FormControl,
+    imagen4: new FormControl,
+    imagen5: new FormControl,
+    idCategoria: new FormControl("0"),
+    idTienda: new FormControl("0")  
+  })
 
 
   constructor(private route: Router, private activateRoute: ActivatedRoute, private productoService: ProductoService,private categoriaService: CategoriaService, private tiendaService: TiendaService) {
@@ -59,9 +59,27 @@ export class EditarProductoComponent implements OnInit {
   //Método para obtener un producto mediante su Id 
   obtenerProductoPorId(id: string) {
     id = this.id;
-    this.productoService.getProductoById(id).subscribe((response) => {
-      this.datos = response;
-      console.log(this.datos);
+    this.productoService.getProductoById(id).subscribe((response:any) => {
+      this.FormGroup.setValue({
+        id: response.id,
+        nombre: response.nombre,
+        descripcion: response.descripcion ,
+        cantidad: response.cantidad,
+        precio: response.precio,
+        genero: response.genero,
+        talla: response.talla,
+        tipoMaterial: response.tipoMaterial,
+        descuento: response.descuento,
+        marca: response.marca,
+        imagenPrincipal: response.imagenPrincipal,
+        imagen2: response.imagen2,
+        imagen3: response.imagen3,
+        imagen4: response.imagen4,
+        imagen5: response.imagen5,
+        idCategoria: response.idCategoria,
+        idTienda: response.idTienda
+      })
+      console.log(this.FormGroup.value)
     })
   }
 
@@ -69,7 +87,7 @@ export class EditarProductoComponent implements OnInit {
   //Método para actualizar un producto pasandole el Id de la que se quiere actualizar y los nuevos datos que seran actualizados
   actualizarProductoPorId(id: string, categoria: any) {
     id = this.id; // Se le pasa el Id de la URL que ya estaba guardada en la variable this.id
-    categoria = this.datos; //Se le pasa una variable categoria que se le asignan los nuevos datos
+    categoria = this.FormGroup.value; //Se le pasa una variable categoria que se le asignan los nuevos datos
     this.productoService.updateProducto(id, categoria).subscribe((response) => {
     }, (error) => {
       if (error.status === 200) { // Si el estado de la respuesta es 200 entonces se actualizo exitosamente

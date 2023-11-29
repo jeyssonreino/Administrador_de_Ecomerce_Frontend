@@ -1,150 +1,151 @@
-<div>
-    <div>
-      <h1>Agregar nuevo producto</h1>
-    </div>
-    <div>
-      <form action="">
-        <div>
-          <label for="nombre">Nombre: </label>
-          <input
-            type="text"
-            name="nombre"
-            id="nombre"
-            [(ngModel)]="datos.nombre"
-          />
-        </div>
-        <div>
-          <label for="nombre">Descripción: </label>
-          <input
-            type="text"
-            name="descripcion"
-            id="descripcion"
-            [(ngModel)]="datos.descripcion"
-          />
-        </div>
-        <div>
-          <label for="nombre">Cantidad: </label>
-          <input
-            type="number"
-            name="cantidad"
-            id="cantidad"
-            [(ngModel)]="datos.cantidad"
-          />
-        </div>
-        <div>
-          <label for="nombre">Precio: </label>
-          <input
-            type="number"
-            name="precio"
-            id="precio"
-            [(ngModel)]="datos.precio"
-          />
-        </div>
-        <div>
-          <label for="nombre">Genero: </label>
-          <select name="genero" id="genero" [(ngModel)]="datos.genero">
-            <option value="I">Seleccione un genero</option>
-            <option value="M">Masculino</option>
-            <option value="F">Femenino</option>
-            <option value="O">Otro</option>
-          </select>
-        </div>
-        <div>
-          <label for="nombre">Talla: </label>
-          <select name="talla" id="talla" [(ngModel)]="datos.talla">
-            <option value="I">Seleccione una talla</option>
-            <option value="XS">XS</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-            <option value="XXL">XXL</option>
-          </select>
-        </div>
-        <div>
-          <label for="nombre">Tipo de material: </label>
-          <input
-            type="text"
-            name="tipoMaterial"
-            id="tipoMaterial"
-            [(ngModel)]="datos.tipoMaterial"
-          />
-        </div>
-        <div>
-          <label for="nombre">Descuento: </label>
-          <input
-            type="number"
-            name="descuento"
-            id="descuento"
-            [(ngModel)]="datos.descuento"
-          />
-        </div>
-        <div>
-          <label for="nombre">Marca: </label>
-          <input type="text" name="marca" id="marca" [(ngModel)]="datos.marca" />
-        </div>
-        <div>
-          <label for="nombre">URL de imagen principal:</label>
-          <input
-            type="text"
-            name="imagenPrincipal"
-            id="imagenPrincipal"
-            [(ngModel)]="datos.imagenPrincipal"
-          />
-        </div>
-        <div>
-          <label for="nombre">URL de imagen 2:</label>
-          <input
-            type="text"
-            name="imagen2"
-            id="imagen2"
-            [(ngModel)]="datos.imagen2"
-          />
-        </div>
-        <div>
-          <label for="nombre">URL de imagen 3:</label>
-          <input
-            type="text"
-            name="imagen3"
-            id="imagen3"
-            [(ngModel)]="datos.imagen3"
-          />
-        </div>
-        <div>
-          <label for="nombre">URL de imagen 4:</label>
-          <input
-            type="text"
-            name="imagen4"
-            id="imagen4"
-            [(ngModel)]="datos.imagen4"
-          />
-        </div>
-        <div>
-          <label for="nombre">URL de imagen 5:</label>
-          <input
-            type="text"
-            name="imagen5"
-            id="imagen5"
-            [(ngModel)]="datos.imagen5"
-          />
-        </div>
-        <div>
-          <label for="nombre">Categoria:</label>
-          <select name="idCategoria" id="idCategoria" [(ngModel)] = "datos.idCategoria" >
-              <option value="0" selected >Seleccione una categoria</option>
-              <option *ngFor="let categoria of categorias" value="{{ categoria.id }}"> {{ categoria.nombre}}</option>
-          </select>
-        </div>
-        <div>
-          <label for="nombre">Tienda:</label>
-          <select name="idTienda" id="idTienda" [(ngModel)] = "datos.idTienda">
-              <option value="0" selected>Seleccione una tienda</option>
-              <option *ngFor="let tienda of tiendas" value="{{ tienda.id }}"> {{ tienda.nombre }}</option>
-          </select>
-        </div>
-        <button (click)="actualizarProductoPorId(id,producto)">Editar</button>
-        <button (click)="redireccionarProducto()">Volver</button>
-      </form>
-    </div>
+<div class="titulo">
+  <h1>Agregar producto</h1>
+</div>
+
+<form class="formulario" [formGroup]="FormGroup">
+
+  <mat-form-field class="field">
+      <mat-label>Nombre del producto</mat-label>
+      <input matInput type="text" formControlName = "nombre">
+        <button *ngIf="FormGroup.get('nombre')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('nombre')?.setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field class="field">
+      <mat-label>Descripción</mat-label>
+      <input matInput type="text" formControlName = "descripcion">
+        <button *ngIf="FormGroup.get('descripcion')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('descripcion')?.setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field class="field">
+      <mat-label>Cantidad en el inventario</mat-label>
+      <input matInput type="number" formControlName = "cantidad">
+        <button *ngIf="FormGroup.get('cantidad')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('cantidad')?.setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field class="field">
+      <mat-label>Precio</mat-label>
+      <input matInput type="number" formControlName = "precio">
+        <button *ngIf="FormGroup.get('precio')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('precio')?.setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field class="field">
+      <mat-label>Genero</mat-label>
+      <mat-select formControlName = "genero">
+          <mat-option value="I"> Selecciones una opción</mat-option>
+          <mat-option value="M"> Masculino </mat-option>
+          <mat-option value="F"> Femenino </mat-option>
+          <mat-option value="O"> Otro </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="field">
+      <mat-label>Talla</mat-label>
+      <mat-select formControlName = "talla">
+          <mat-option value="I"> Selecciones una opción</mat-option>
+          <mat-option value="XS">XS</mat-option>
+          <mat-option value="S">S</mat-option>
+          <mat-option value="M">M</mat-option>
+          <mat-option value="L">L</mat-option>
+          <mat-option value="XL">XL</mat-option>
+          <mat-option value="XXL">XXL</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="field">
+      <mat-label>Tipo de material</mat-label>
+      <input matInput type="text" formControlName = "tipoMaterial">
+        <button *ngIf="FormGroup.get('tipoMaterial')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('tipoMaterial')?.setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field class="field">
+      <mat-label>Descuento en porcentajes</mat-label>
+      <input matInput type="number" formControlName = "descuento">
+        <button *ngIf="FormGroup.get('descuento')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('descuento')?.setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field class="field">
+      <mat-label>Marca</mat-label>
+      <input matInput type="text" formControlName = "marca">
+        <button *ngIf="FormGroup.get('marca')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('marca')?.setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field class="field">
+      <mat-label>Imagen principal</mat-label>
+      <input matInput type="text" formControlName = "imagenPrincipal">
+        <button *ngIf="FormGroup.get('imagenPrincipal')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('imagenPrincipal')?.setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+
+    <mat-form-field class="field">
+      <mat-label>URL de imagen 2</mat-label>
+      <input matInput type="text" formControlName = "imagen2">
+        <button *ngIf="FormGroup.get('imagen2')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('imagen2')?.setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field class="field">
+      <mat-label>URL de imagen 3</mat-label>
+      <input matInput type="text" formControlName = "imagen3">
+        <button *ngIf="FormGroup.get('imagen3')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('imagen3')?.setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field class="field">
+      <mat-label>URL de imagen 4</mat-label>
+      <input matInput type="text" formControlName = "imagen4">
+        <button *ngIf="FormGroup.get('imagen4')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('imagen4')?.setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field class="field">
+      <mat-label>URL de imagen 5</mat-label>
+      <input matInput type="text" formControlName = "imagen5">
+        <button *ngIf="FormGroup.get('imagen5')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('imagen5')?.setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field class="field">
+      <mat-label>Categoria</mat-label>
+      <mat-select formControlName = "idCategoria">
+          <mat-option value="I"> Selecciones una opción</mat-option>
+          <mat-option *ngFor="let categoria of categorias" value=" {{ categoria.id }}"> {{ categoria.nombre }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="field">
+      <mat-label>Tienda</mat-label>
+      <mat-select formControlName = "idTienda">
+          <mat-option value="I"> Selecciones una opción</mat-option>
+          <mat-option *ngFor="let tienda of tiendas" value=" {{ tienda.id }}"> {{ tienda.nombre }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+</form>
+
+<div class="opciones">
+  <div class="botones-opciones">
+      <button mat-raised-button color="primary" class="bnt-volver" (click)="redireccionarProducto()">Volver</button>
+      <button mat-raised-button color="primary" class="btn-agregar" (click)="actualizarProductoPorId(id, producto)">Actualizar</button>
   </div>
-  
+</div>
+

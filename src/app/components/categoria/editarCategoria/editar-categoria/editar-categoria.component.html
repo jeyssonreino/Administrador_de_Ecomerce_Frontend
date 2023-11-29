@@ -1,16 +1,22 @@
-<div>
-    <div>
-        <h1>Editar categoria</h1>
-    </div>
-    <div>
-        <form action="">
-            <div>
-                <label for="nombre">Nombre: </label>
-                <input type="text" name="nombre" id="nombre" value="{{ categoria.nombre }}" [(ngModel)]="datos.nombre">
-            </div>
-            <button (click)="actualizarCategoriaPorId(id,categoria)">Guardar</button>
-            <button (click)="redireccionarCategoria()">Volver</button>
-        </form>
-    </div>
+<div class="titulo">
+    <h1>Agregar categoria</h1>
 </div>
 
+<form class="formulario" [formGroup]="FormGroup">
+
+    <mat-form-field class="field">
+        <mat-label>Nombre</mat-label>
+        <input matInput type="text" formControlName = "nombre">
+          <button *ngIf="FormGroup.get('nombre')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('nombre')?.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+      </mat-form-field>
+
+</form>
+
+<div class="opciones">
+    <div class="botones-opciones">
+        <button mat-raised-button color="primary" class="bnt-volver" (click)="redireccionarCategoria()">Volver</button>
+        <button mat-raised-button color="primary" class="btn-agregar" (click)="actualizarCategoriaPorId(id,categoria)">Actualizar</button>
+    </div>
+</div>

@@ -1,7 +1,8 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DetallePedidoService } from 'src/app/services/detallePedido/detalle-pedido.service';
-import * as moment from 'moment';
+import { FormControl, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-editar-detalle-pedido',
@@ -13,16 +14,15 @@ export class EditarDetallePedidoComponent implements OnInit {
   id: string = ''; // Varriable Id para guardar el parametro ID de la URL
   detallePedido: any;
 
-  //Objeto nuevo que reemplezar y actualizara al objeto registrado en la base de datos 
-  datos: any = {
-    id: '',
-    fechaPedido: '',
-    horaPedido: '',
-    formaPago: 'I',
-    ciudad: '',
-    direccion: '',
-    estado: 'I'
-  };
+  FormGroup: FormGroup = new FormGroup({
+    id: new FormControl(''),
+    fechaPedido: new FormControl(null),
+    horaPedido: new FormControl(null),
+    formaPago: new FormControl('I'),
+    ciudad:new FormControl,
+    direccion: new FormControl,
+    estado: new FormControl('I')
+  })
 
 
   constructor(private route: Router, private activateRoute: ActivatedRoute, private detallePedidoService: DetallePedidoService) {
@@ -41,22 +41,30 @@ export class EditarDetallePedidoComponent implements OnInit {
   //Método para obtener un detalle del pedido mediante su Id 
   obtenerDetalleProductoPorId(id: string) {
     id = this.id;
-    this.detallePedidoService.getDetallePedidoById(id).subscribe((response) => {
-      this.datos = response;
+    this.detallePedidoService.getDetallePedidoById(id).subscribe((response:any) => {
+      this.FormGroup.setValue({
+        id: response.id,
+        fechaPedido: response.fechaPedido,
+        horaPedido: response.horaPedido,
+        formaPago: response.formaPago,
+        ciudad: response.ciudad,
+        direccion: response.direccion,
+        estado: response.estado
+      })
     })
   }
 
   //Método para actualizar un detalle del pedido pasandole el Id de la que se quiere actualizar y los nuevos datos que seran actualizados
   actualizarDetallePedidoPorId(id: string, detallePedido: any) {
-    if (this.datos.formaPago === 'I') {
+    if (this.FormGroup.value.formaPago === 'I') {
       alert("Seleccione una forma de pago del pedido valido")
-    } else if (this.datos.estado === 'I') {
+    } else if (this.FormGroup.value.estado === 'I') {
       alert("Seleccione un estado del pedido valido")
-    } else if (this.datos.fechaPedido === '' || this.datos.horaPedido === '' || this.datos.ciudad === '' || this.datos.direccion === '') {
+    } else if (this.FormGroup.value.fechaPedido  === '' || this.FormGroup.value.horaPedido === '' || this.FormGroup.value.ciudad === '' || this.FormGroup.value.direccion === '') {
       alert("Complete todos los campos")
     } else {
       id = this.id; // Se le pasa el Id de la URL que ya estaba guardada en la variable this.id
-      detallePedido = this.datos; //Se le pasa una variable detalle del pedido que se le asignan los nuevos datos
+      detallePedido = this.FormGroup.value; //Se le pasa una variable detalle del pedido que se le asignan los nuevos datos
       this.detallePedidoService.updateDetallePedido(id, detallePedido).subscribe((response) => {
       }, (error) => {
         if (error.status === 200) { // Si el estado de la respuesta es 200 entonces se actualizo exitosamente
