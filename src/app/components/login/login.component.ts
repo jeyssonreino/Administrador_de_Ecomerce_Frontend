@@ -1,7 +1,8 @@
-import { Token } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login/login.service';
+import { FormControl, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-login',
@@ -10,22 +11,23 @@ import { LoginService } from 'src/app/services/login/login.service';
 })
 export class LoginComponent {
 
-  correo?: string;
-  contrasena?: string;
+
 
   constructor(private route: Router, private loginService: LoginService) {
 
   }
 
+  FormGroup: FormGroup = new FormGroup({
+    username: new FormControl,
+    password: new FormControl,
+  })
+
   iniciarSession() {
-    let datos = {
-      username: this.correo,
-      password: this.contrasena
-    }
+    let datos = this.FormGroup.value
     this.loginService.loguearUsuario(datos).subscribe((response) => {
       this.route.navigate(['']);
       }, (error) => {
-        console.log("Correo electronico o contraseña incorrectos, intente de nuevo" );
+        alert("Correo electronico o contraseña incorrectos, intente de nuevo" );
       });
 
 

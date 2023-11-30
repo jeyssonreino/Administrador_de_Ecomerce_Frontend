@@ -28,7 +28,7 @@ import { NavegadorComponent } from './components/navegador/navegador.component';
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: DetallePedidoComponent
   },
   {
     path: 'login',

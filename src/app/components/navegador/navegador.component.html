@@ -10,6 +10,7 @@
       <a mat-list-item routerLink="/usuario" routerLinkActive="active">Usuarios</a>
       <a mat-list-item routerLink="/categoria" routerLinkActive="active">Categorias</a>
       <a mat-list-item routerLink="/tienda" routerLinkActive="active">Tiendas</a>
+      <a mat-list-item (click)="salir()" *ngIf="obtenerToken() == true">Salir</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

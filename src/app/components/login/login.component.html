@@ -1,18 +1,31 @@
-<div class="contenedor-principal">
-  <h1>Iniciar Sesión</h1>
-  <form action="">
-    <div class="formulario-login-input">
-      <label for="correo">Correo</label>
-      <input type="email" [(ngModel)]="correo" name="correo" id="correo" required/>
-    </div>
-    <div class="formulario-login-input">
-      <label for="contrasena">Contraseña</label>
-      <input type="password" [(ngModel)]="contrasena" name="contrasena" id="contrasena" required/>
-    </div>
-    <div class="formulario-login-input">
-        <button class="btn-iniciar-session" (click)="iniciarSession()">Iniciar Sesión</button>
-    </div>
-  </form>
+<div class="titulo">
+  <h1>Iniciar sesión</h1>
+</div>
+
+<form class="formulario" [formGroup]="FormGroup">
+
+  <mat-form-field class="field">
+      <mat-label>Correo</mat-label>
+      <input matInput type="email" formControlName = "username">
+        <button *ngIf="FormGroup.get('username')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('username')?.setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field class="field">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" formControlName = "password">
+        <button *ngIf="FormGroup.get('password')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="FormGroup.get('password')?.setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+</form>
+
+<div class="opciones">
+  <div class="botones-opciones">
+      <button mat-raised-button color="primary" class="bnt-volver" (click)="iniciarSession()">Iniciar sesión</button>
+  </div>
   <div class="mas-opciones-login">
     <div class="contenedor-registrarse">
         <a routerLink="/login">Registrarse</a>
