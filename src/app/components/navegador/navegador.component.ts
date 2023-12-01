@@ -23,18 +23,21 @@ export class NavegadorComponent {
 
     let token = this.loginService.obtenerToken();
     if (token){
-      console.log(true);
       return true;
     }else{
-      console.log(false)
       return false;
     }
   }
   
   salir(){
     if(this.obtenerToken() === true){
-      this.loginService.eliminarToken();
-      this.route.navigate(['/login']);
+      let respuesta =window.confirm("¿Seguro que desea salir de la aplicación?")
+      if(respuesta){
+        this.loginService.eliminarToken();
+        this.loginService.eliminarIdUsuario();
+        this.loginService.eliminarEmailUsuario();
+        this.route.navigate(['/login']);
+      }
     }
   }
 
