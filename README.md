@@ -1,4 +1,4 @@
-# EcomerceFrontend
+# Sistema De Administración De Tienda Virtual
 
 Sistema de administración de tienda virtual: Productos, Pedidos, Usuarios, Proveedores y Categorias. Desarrollado en Angular y utilizando solo diseños de Angular Material. Utiliza la arquetectura API-Rest para consumir servicios del Backend y la seguridad basada en Tokens lo cual grarantiza mayor confianza.
 
