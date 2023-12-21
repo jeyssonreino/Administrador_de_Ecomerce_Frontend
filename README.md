@@ -6,7 +6,7 @@ Sistema de administración de tienda virtual: Productos, Pedidos, Usuarios, Prov
 
 [![Captura-de-pantalla-2023-12-21-163925.png](https://i.postimg.cc/mZjDHMhY/Captura-de-pantalla-2023-12-21-163925.png)](https://postimg.cc/SjXk0n6R)
 
-El sistema es permite listar, agregar, editar y eliminar la información que el administrador desee. 
+El sistema permite listar, agregar, editar y eliminar la información que el administrador desee. 
 
 [![Captura-de-pantalla-2023-12-21-163951.png](https://i.postimg.cc/gjz27ctL/Captura-de-pantalla-2023-12-21-163951.png)](https://postimg.cc/Pp7HpHjd)
 
