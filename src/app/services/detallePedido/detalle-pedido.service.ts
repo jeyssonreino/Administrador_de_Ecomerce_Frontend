@@ -35,4 +35,20 @@ export class DetallePedidoService {
       const url = this.api + `/registrar-detallepedido`;
       return this.http.post(url,datos);
     }
+
+    //Servicio para obtener el detalle del pedido con interseccion de tablas por el Id del detalle del pedido
+    getDetalleDelPedidoByIdWithFk(id:number){
+      const url = this.api + `/obtenerDetallePedidoPorId/${id}`;
+      return this.http.get(url);
+    }
+    //Servicio para obtener todos los productos del pedido en especifico por Id del detalle del pedido
+    getProductosDelPedidoById(id:number){
+      const url = this.api + `/obtenerProductosDelPedidoPorId/${id}`;
+      return this.http.get(url);
+    }
+    //Servicio para obtener el total a pagar del pedido en especifico por Id del detalle del pedido
+    getTotalDelPedido(id:number){
+      const url = this.api + `/obtenerTotalDelDetalleDelPedido/${id}`;
+      return this.http.get(url);
+    }
 }

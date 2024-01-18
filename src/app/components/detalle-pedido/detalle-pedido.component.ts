@@ -75,4 +75,9 @@ export class DetallePedidoComponent implements OnInit{
       this.route.navigate(['/agregarDetallePedido'])
     }
 
+      //Método para redireccionar a agregarDetallePedido
+      redireccionFacturacion(id:number){
+        this.route.navigate([`/facturacion/${id}`])
+      }
+
 }

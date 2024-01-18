@@ -1,0 +1,35 @@
+.container-general{
+    margin: 5px 0px 0px 0px;
+    padding: 1%;
+}
+
+.container-informativo{
+    display: flex;
+    justify-content: space-around;
+}
+
+.container-total{
+    margin: 50px 0px 5px 0px;
+    display: flex;
+    justify-content: center;
+
+    .total{
+        font-size: 30px;
+    }
+
+}
+
+.titulo-productos{
+    display: flex;
+    justify-content: center;
+}
+
+.productos{
+    display: flex;
+    justify-content: center;
+
+
+}
+
+
+

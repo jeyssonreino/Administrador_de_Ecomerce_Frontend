@@ -21,6 +21,7 @@ import { PedidoComponent } from './components/pedido/pedido.component';
 import { AgregarPedidoComponent } from './components/pedido/agregar-pedido/agregar-pedido.component';
 import { EditarPedidoComponent } from './components/pedido/editar-pedido/editar-pedido.component';
 import { NavegadorComponent } from './components/navegador/navegador.component';
+import { FacturacionComponent } from './components/facturacion/facturacion.component';
 
 
 
@@ -114,7 +115,11 @@ const routes: Routes = [
     path: 'navegador',
     outlet: 'navegador',
     component: NavegadorComponent
-  }
+  },
+  {
+    path: 'facturacion/:id',
+    component: FacturacionComponent
+  },
 
 ];
 

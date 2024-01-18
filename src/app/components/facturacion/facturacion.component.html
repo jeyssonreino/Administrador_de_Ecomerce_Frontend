@@ -1,0 +1,53 @@
+<div class="container-general">
+  <div class="btn-imprimir">
+    <button mat-raised-button color="primary">Imprimir</button>
+  </div>
+
+  <div class="container-informativo">
+    <div>
+      <h1>Datos del cliente</h1>
+      <p>Id del pedido: {{ pedido.id }}</p>
+      <p>Nombres y Apellidos: {{ pedido.nombreCompleto }}</p>
+      <p>Número de contacto: {{ pedido.telefono }}</p>
+      <p>Correo electrónico: {{ pedido.correo }}</p>
+    </div>
+
+    <div>
+      <h1>Datos de entrega</h1>
+      <p>Dirección: {{ pedido.direccion }}</p>
+      <p>Ciudad: {{ pedido.ciudad }}</p>
+      <p>Forma de pago: {{ pedido.formaPago }}</p>
+      <p></p>
+    </div>
+  </div>
+
+  <div class="container-total">
+    <p class="total">Total a pagar: ${{ total.total}}</p>
+  </div>
+
+  <div class="titulo-productos"><h1>Productos comprados</h1></div>
+
+  <div class="productos">
+
+    <table class="tabla-productos" >
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Descuento</th>
+          <th>Precio unitario (COP)</th>
+          <th>Precio total (COP)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of productos">
+          <td>{{ producto.id }}</td>
+          <td>{{ producto.nombre }}</td>
+          <td>{{ producto.descuento }}%</td>
+          <td>${{ producto.precio }}</td>
+          <td>${{ producto.descuentoProducto }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

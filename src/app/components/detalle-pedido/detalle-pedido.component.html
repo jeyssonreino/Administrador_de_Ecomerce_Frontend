@@ -47,7 +47,8 @@
         <th mat-header-cell *matHeaderCellDef>Opciones</th>
         <td mat-cell *matCellDef="let element">
             <button mat-raised-button (click)="redireccionEditarDetallePedido(element.id)">Editar</button>
-            <button mat-raised-button color="warn" (click)="eliminarDetallePedidoPorId(element.id)">Eliminar</button>       
+            <button mat-raised-button color="warn" (click)="eliminarDetallePedidoPorId(element.id)">Eliminar</button>   
+            <button mat-raised-button color="primary" (click)="redireccionFacturacion(element.id)">Ver detalles</button>   
         </td>
       </ng-container>
 

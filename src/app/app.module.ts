@@ -36,6 +36,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import { FacturacionComponent } from './components/facturacion/facturacion.component';
 
 
 
@@ -67,6 +68,7 @@ import {MatSelectModule} from '@angular/material/select';
     AgregarPedidoComponent,
     EditarPedidoComponent,
     NavegadorComponent,
+    FacturacionComponent,
     
 
 
