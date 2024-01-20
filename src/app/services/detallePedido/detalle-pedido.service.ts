@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -50,5 +50,16 @@ export class DetallePedidoService {
     getTotalDelPedido(id:number){
       const url = this.api + `/obtenerTotalDelDetalleDelPedido/${id}`;
       return this.http.get(url);
+    }
+
+    //Servicio para obtener obtener la factura en PDF
+    getPDFFactura(id:number){
+      const url = this.api + `/generar-factura/${id}`;
+      return this.http.get(url,{
+        responseType: "arraybuffer",
+        headers: new HttpHeaders({
+          'Content-Type': 'aplication/json',
+        })
+      });
     }
 }

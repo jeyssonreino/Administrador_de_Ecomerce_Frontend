@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DetallePedidoService } from 'src/app/services/detallePedido/detalle-pedido.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-facturacion',
   templateUrl: './facturacion.component.html',
@@ -29,7 +30,6 @@ export class FacturacionComponent implements OnInit {
   obtenerDetallesDelPedido(id:any){
     this.detallePedidoService.getDetalleDelPedidoByIdWithFk(id).subscribe((response) =>{
       this.pedido = response;
-      console.log(this.pedido); //Borrar
     },(error)=>{
       if(error.status === 200){
         alert("No tiene permisos");
@@ -45,7 +45,6 @@ export class FacturacionComponent implements OnInit {
   obtenerProductosDelPedido(id:any){
     this.detallePedidoService.getProductosDelPedidoById(id).subscribe((response) =>{
       this.productos = response;
-      console.log(this.productos); //Borrar
     },(error)=>{
       if(error.status === 200){
         alert("No tiene permisos");
@@ -63,7 +62,6 @@ export class FacturacionComponent implements OnInit {
   obtenerTotalDelPedido(id:any){
     this.detallePedidoService.getTotalDelPedido(id).subscribe((response) =>{
       this.total = response;
-      console.log(this.total); //Borrar
     },(error)=>{
       if(error.status === 200){
         alert("No tiene permisos");
@@ -75,6 +73,33 @@ export class FacturacionComponent implements OnInit {
       }
     });
   }
+
+  //Método que consume el servicio para generar una factura PDF
+  generarFactura(id: number): void {
+    // Hacer la solicitud HTTP para obtener el archivo PDF
+    this.detallePedidoService.getPDFFactura(id)
+      .subscribe(
+        (response: ArrayBuffer) => {
+          // Crear un blob a partir de los bytes recibidos
+          const blob = new Blob([response], { type: 'application/pdf' });
+
+          // Crear un enlace (link) temporal
+          const link = document.createElement('a');
+          link.href = window.URL.createObjectURL(blob);
+          link.download = 'factura.pdf';
+
+          // Hacer clic en el enlace para iniciar la descarga
+          link.click();
+
+          // Limpiar y liberar el enlace
+          window.URL.revokeObjectURL(link.href);
+        },
+        (error) => {
+          console.error('Error al generar la factura', error);
+        }
+      );
+  }
+  
 
 
 
