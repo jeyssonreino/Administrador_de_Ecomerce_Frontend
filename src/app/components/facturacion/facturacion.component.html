@@ -32,9 +32,10 @@
     <table class="tabla-productos" >
       <thead>
         <tr>
-          <th>ID</th>
+          <th>Id</th>
           <th>Nombre</th>
           <th>Descuento</th>
+          <th>Cantidad</th>
           <th>Precio unitario (COP)</th>
           <th>Precio total (COP)</th>
         </tr>
@@ -44,6 +45,7 @@
           <td>{{ producto.id }}</td>
           <td>{{ producto.nombre }}</td>
           <td>{{ producto.descuento }}%</td>
+          <td>{{producto.cantidad}}</td>
           <td>${{ producto.precio }}</td>
           <td>${{ producto.descuentoProducto }}</td>
         </tr>
